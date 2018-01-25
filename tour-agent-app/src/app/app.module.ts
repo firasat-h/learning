@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { CustomerSummaryComponent } from './customer-search/customer-search.component';
+import { CustomerSearchComponent } from './customer-search/customer-search.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 
 
@@ -13,7 +13,7 @@ import { CustomerEditComponent } from './customer-edit/customer-edit.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    CustomerSummaryComponent,
+    CustomerSearchComponent,
     CustomerEditComponent
   ],
   imports: [
