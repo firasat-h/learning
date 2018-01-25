@@ -6,10 +6,12 @@ import {CustomerSummaryComponent} from './customer-search/customer-search.compon
 import {CustomerEditComponent} from './customer-edit/customer-edit.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  /* Static routes first, then general, then dynamic. */
   { path: 'home', component: HomeComponent },
   { path: 'customer-search', component: CustomerSummaryComponent },
-  { path: 'customer-edit', component: CustomerEditComponent }
+  { path: 'customer-edit', component: CustomerEditComponent },
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
