@@ -1,3 +1,34 @@
-<p>
-  package-summary works!
-</p>
+
+<div class="container">
+
+  <!-- Page heading -->
+  <div class="row mt-5">
+    <div class="col-md-5">
+      <h4>Package Summary</h4>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-10">
+      <table class="table table-hover">
+        <thead>
+        <tr class="table-success">
+          <th scope="col">Id</th>
+          <th scope="col">Type</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let summary of packageSummaries">
+          <td scope="row"><a [routerLink]="['/package', summary.id]">{{ summary.id }}</a></td>
+          <td>{{ summary.type }}</td>
+          <td>{{ summary.name }}</td>
+          <td>{{ summary.description }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

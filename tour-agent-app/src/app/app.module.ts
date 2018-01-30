@@ -11,6 +11,8 @@ import { CustomerSearchResultsComponent } from './components/customer-search-res
 
 import { CustomerSearchService } from './services/customer-search.service';
 import { PackageSummaryComponent } from './components/package-summary/package-summary.component';
+import { PackageService } from './services/package.service';
+import { PackageDetailViewComponent } from './components/package-detail-view/package-detail-view.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { PackageSummaryComponent } from './components/package-summary/package-su
     CustomerSearchComponent,
     NotFoundComponent,
     CustomerSearchResultsComponent,
-    PackageSummaryComponent
+    PackageSummaryComponent,
+    PackageDetailViewComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { PackageSummaryComponent } from './components/package-summary/package-su
     FormsModule
   ],
   providers: [
-    CustomerSearchService
+    CustomerSearchService,
+    PackageService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PackageService } from '../../services/package.service';
+import { PackageSummary } from '../../classes/package-summary';
 
 @Component({
   selector: 'app-package-summary',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PackageSummaryComponent implements OnInit {
 
-  constructor() { }
+  packageSummaries: PackageSummary[];
+
+  constructor(private packageService: PackageService) { }
 
   ngOnInit() {
+    this.packageSummaries = this.packageService.getPackageSummaries();
   }
 
 }
