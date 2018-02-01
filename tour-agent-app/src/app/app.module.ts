@@ -13,7 +13,11 @@ import { CustomerSearchService } from './services/customer-search.service';
 import { PackageSummaryComponent } from './components/package-summary/package-summary.component';
 import { PackageService } from './services/package.service';
 import { PackageDetailViewComponent } from './components/package-detail-view/package-detail-view.component';
-
+import { RegistrationComponent } from './components/registration/registration.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AuthService } from './services/auth.service';
+import { AgentService } from './services/agent.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,16 +27,21 @@ import { PackageDetailViewComponent } from './components/package-detail-view/pac
     NotFoundComponent,
     CustomerSearchResultsComponent,
     PackageSummaryComponent,
-    PackageDetailViewComponent
+    PackageDetailViewComponent,
+    RegistrationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     CustomerSearchService,
-    PackageService
+    PackageService,
+    AgentService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

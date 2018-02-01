@@ -6,10 +6,12 @@ import { CustomerSearchComponent } from './components/customer-search/customer-s
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PackageSummaryComponent } from './components/package-summary/package-summary.component';
 import {PackageDetailViewComponent} from './components/package-detail-view/package-detail-view.component';
+import {RegistrationComponent} from './components/registration/registration.component';
 
 const routes: Routes = [
   /* Specific static routes first, then general, then dynamic. */
   { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegistrationComponent },
   { path: 'customer-search', component: CustomerSearchComponent },
   { path: 'package/:id', component: PackageDetailViewComponent },
   { path: 'packages', component: PackageSummaryComponent },

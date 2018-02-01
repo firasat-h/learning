@@ -3,6 +3,7 @@ import { PackageSummary } from '../classes/package-summary';
 import {PackageDetail} from '../classes/package-detail';
 import {RoomOption} from '../classes/room-option';
 import {Itinerary} from '../classes/itinerary';
+import * as Constants from '../classes/constants';
 
 @Injectable()
 export class PackageService {
@@ -26,17 +27,17 @@ export class PackageService {
     packageSummary.createdDate = "1/1/2018";
 
     let roomOption1 = new RoomOption();
-    roomOption1.roomType = RoomOption.DOUBLE;
+    roomOption1.roomType = Constants.DOUBLE_OCCUP;
     roomOption1.perPersonPrice = "12000.00";
     roomOption1.configured = true;
 
     let roomOption2 = new RoomOption();
-    roomOption2.roomType = RoomOption.TRIPLE;
+    roomOption2.roomType = Constants.TRIPLE_OCCUP;
     roomOption2.perPersonPrice = "10700.00";
     roomOption2.configured = true;
 
     let roomOption3 = new RoomOption();
-    roomOption3.roomType = RoomOption.QUAD;
+    roomOption3.roomType = Constants.QUAD_OCCUP;
     roomOption3.perPersonPrice = "9000.00";
     roomOption3.configured = true;
 

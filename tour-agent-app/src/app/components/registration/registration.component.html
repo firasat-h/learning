@@ -1,0 +1,175 @@
+
+<form (ngSubmit)="onSubmit" #registrationForm="ngForm">
+  <div class="container">
+
+    <div class="row mt-5">
+      <div class="col-md-10">
+        <h4>Agency Sign Up</h4>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-5">
+        <div>
+          <label for="agencyName">Agency Name</label>
+          <input type="text" class="form-control" id="agencyName"
+                 aria-describedby="agencyNameHelp" placeholder="Enter agency name" required
+                 [(ngModel)]="model.agencyName" name="agencyName" #agencyName="ngModel">
+          <!-- <small id="firstNameHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="agencyName.valid || agencyName.pristine" class="alert alert-danger">
+          Agency name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-10">
+        <div>
+          <label for="streetAddress">Street Address</label>
+          <input type="text" class="form-control" id="streetAddress"
+                 aria-describedby="streetAddressHelp" placeholder="Enter street address" required
+                 [(ngModel)]="model.streetAddress" name="streetAddress" #streetAddress="ngModel">
+          <!-- <small id="firstNameHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="streetAddress.valid || streetAddress.pristine" class="alert alert-danger">
+          Street address is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-4">
+        <div>
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city"
+                 aria-describedby="cityHelp" placeholder="Enter city" required
+                 [(ngModel)]="model.city" name="city" #city="ngModel">
+          <!-- <small id="firstNameHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="city.valid || city.pristine" class="alert alert-danger">
+          City is required
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div>
+          <label for="state">State</label>
+          <select class="form-control" id="state"
+                  aria-describedby="stateHelp" placeholder="Enter state" required
+                  [(ngModel)]="model.state" name="state" #state="ngModel">
+            <option selected></option>
+            <option>IL</option>
+            <option>NY</option>
+            <option>TX</option>
+          </select>
+        </div>
+        <div [hidden]="state.valid || state.pristine" class="alert alert-danger">
+          State is required
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div>
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" id="zip"
+                 aria-describedby="zipHelp" placeholder="Enter zip" required
+                 [(ngModel)]="model.zip" name="zip" #zip="ngModel">
+          <!-- <small id="firstNameHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="zip.valid || zip.pristine" class="alert alert-danger">
+          Zip is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-5">
+        <div>
+          <label for="mainPhoneNumber">Main Phone #</label>
+          <input type="text" class="form-control" id="mainPhoneNumber"
+                 aria-describedby="mainPhoneNumberHelp" placeholder="Enter main phone number" required
+                 [(ngModel)]="model.mainPhoneNumber" name="mainPhoneNumber" #mainPhoneNumber="ngModel">
+          <!-- <small id="emailHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="mainPhoneNumber.valid || mainPhoneNumber.pristine" class="alert alert-danger">
+          Main phone number is required
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div>
+          <label for="websiteUrl">Url</label>
+          <input type="text" class="form-control" id="websiteUrl"
+                 aria-describedby="websiteUrlHelp" placeholder="Enter website url"
+                 [(ngModel)]="model.websiteUrl" name="websiteUrl" #websiteUrl="ngModel">
+          <!-- <small id="emailHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacer -->
+    <div class="row mt-5">
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-5">
+        <div>
+          <label for="adminName">Administrator Name</label>
+          <input type="text" class="form-control" id="adminName"
+                 aria-describedby="adminNameHelp" placeholder="Enter Administrator full name" required
+                 [(ngModel)]="model.adminName" name="adminName" #adminName="ngModel">
+          <!-- <small id="emailHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="adminName.valid || adminName.pristine" class="alert alert-danger">
+          Administrator full name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-5">
+        <div>
+          <label for="adminEmail">Email</label>
+          <input type="email" class="form-control" id="adminEmail"
+                 aria-describedby="adminEmailHelp" placeholder="Enter email" required
+                 [(ngModel)]="model.adminEmail" name="adminEmail" #adminEmail="ngModel">
+          <!-- <small id="emailHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="adminEmail.valid || adminEmail.pristine" class="alert alert-danger">
+          Email is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-5">
+        <div>
+          <label for="adminPhoneNumber">Phone #</label>
+          <input type="text" class="form-control" id="adminPhoneNumber"
+                 aria-describedby="adminPhoneNumberHelp" placeholder="Enter phone number" required
+                 [(ngModel)]="model.adminPhoneNumber" name="adminPhoneNumber" #adminPhoneNumber="ngModel">
+          <!-- <small id="emailHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div [hidden]="adminPhoneNumber.valid || adminPhoneNumber.pristine" class="alert alert-danger">
+          Phone is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-1">
+        <div>
+          <button (click)="onSubmit()" class="btn btn-success">Sign Up</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
