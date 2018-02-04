@@ -15,6 +15,7 @@ import { MessageService } from './message.service';
 
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProjectedChildComponent } from './projected-child/projected-child.component';
 
 
 @NgModule({
@@ -23,7 +24,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProjectedChildComponent
+  ],
+  entryComponents: [
+    HeroesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,13 @@
 
 <h2>My Heroes</h2>
 
+<ng-content></ng-content>
+
 <div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
+  <p #heroLabel>Hero Name</p>
+  <input #heroName type="text"/>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
-    add
-  </button>
+  <button (click)="add(heroName.value); heroName.value=''">Add</button>
 </div>
 
 <ul class="heroes">
