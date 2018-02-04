@@ -1,4 +1,5 @@
 export class Agency {
+  id: string = '-1';
   agencyName: string;
   streetAddress: string;
   city: string;

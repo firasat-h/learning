@@ -9,8 +9,10 @@ import { AgentService } from '../../services/agent.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  agencies: Agency[] = [];
   model = new Agency();
+  editMode = true;
+  displaySuccess = false;
+  displayFailed = false;
 
   constructor(private agentService: AgentService) { }
 
@@ -20,10 +22,21 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     console.log('OnSubmit');
     this.agentService.registerAgency(this.model).subscribe(
-      model => {this.agencies.push(model);
+      model => {
+        this.model = model;
+        if (this.model != null) {
+          this.displaySuccess = true;
+          this.displayFailed = false;
+          this.editMode = false;
+        }
+        else {
+          this.displayFailed = true;
+          this.displaySuccess = false;
+        }
       }
     );
-    console.log('agencies: ' + this.agencies);
+    console.log('agencies: ' + this.model);
   }
+
 
 }

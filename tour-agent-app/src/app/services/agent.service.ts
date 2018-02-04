@@ -4,17 +4,22 @@ import * as Constants from '../classes/constants';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import {AbstractBaseService} from './abstract-base.service';
+import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' } )
+  headers: new HttpHeaders({ 'Content-Type': 'application/json',
+    'Authorization': 'my-auth-token'} )
 };
 
 @Injectable()
-export class AgentService {
+export class AgentService extends AbstractBaseService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   /*
   getHero(id: number): Observable<Hero> {
@@ -37,7 +42,7 @@ export class AgentService {
 
 
   registerAgency(agency: Agency): Observable<Agency> {
-    let params: string = "?" + "agencyName="+agency.agencyName +
+    const params: string = "?" + "agencyName="+agency.agencyName +
       "&" + "streetAddress="+agency.streetAddress +
       "&" + "city="+agency.city +
       "&" + "state="+agency.state +
@@ -48,25 +53,53 @@ export class AgentService {
       "&" + "adminEmail="+agency.adminEmail +
       "&" + "adminPhoneNumber="+agency.adminPhoneNumber;
 
-    return this.http.post<Agency>(Constants.API_URL + "/registerAgency" + params, agency, httpOptions)
+    /*
+    const params = new HttpParams();
+    params.set('agencyName', agency.agencyName.trim());
+    params.set('streetAddress', agency.streetAddress.trim());
+    params.set('city', agency.city.trim());
+    params.set('state', agency.state.trim());
+    params.set('zip', agency.zip.trim());
+    params.set('mainPhoneNumber', agency.mainPhoneNumber.trim());
+    params.set('websiteUrl', agency.websiteUrl.trim());
+    params.set('adminName', agency.adminName.trim());
+    params.set('adminEmail', agency.adminEmail.trim());
+    params.set('adminPhoneNumber', agency.adminPhoneNumber.trim());
+    */
+
+    //this.http.get<Agency>(Constants.API_URL + "", agency, httpOptions).pipe();
+
+    return this.http.post<Agency>(Constants.API_URL + '/registerAgency' + params,
+      agency, httpOptions)
       .pipe(
-        tap(_ => this.log(`added agency with name=${agency.agencyName}`)),
+        tap(_ => this.log("AgencyService", `added agency with name=${agency.agencyName}`)),
         catchError(this.handleError<Agency>(`registerAgency`))
       );
-  }
-
-  private log(message: string) {
-    //this.messageService.add('HeroService: ' + message);
-    console.log('AgencyService: ' + message);
   }
 
   private handleError<T> (operation = 'operation',
                           result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed: $(error.message}`);
+      this.log("AgentService", + `${operation} failed: ` + error.message);
       return of(result as T);
     };
   }
+
+  private handleErrorA(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an ErrorObservable with a user-facing error message
+    return new ErrorObservable(
+      'Something bad happened; please try again later.');
+  };
 
 }

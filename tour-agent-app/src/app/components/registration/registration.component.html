@@ -1,10 +1,33 @@
+<div *ngIf="displaySuccess" class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Registration successful!
+</div>
+
+<div *ngIf="displayFailed" class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Please try again.
+</div>
+
 
 <form (ngSubmit)="onSubmit" #registrationForm="ngForm">
   <div class="container">
 
-    <div class="row mt-5">
+    <div class="row mt-1">
       <div class="col-md-10">
         <h4>Agency Sign Up</h4>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-3">
+        <div>
+          <label for="id">Id</label>
+          <input type="text" class="form-control" id="id"
+                 aria-describedby="idHelp" readonly
+                 [(ngModel)]="model.id" name="id" #id="ngModel">
+          <!-- <small id="firstNameHelp" class="form-text
+            text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
       </div>
     </div>
 
@@ -145,9 +168,6 @@
           Email is required
         </div>
       </div>
-    </div>
-
-    <div class="row mt-3">
       <div class="col-md-5">
         <div>
           <label for="adminPhoneNumber">Phone #</label>
@@ -169,6 +189,9 @@
           <button (click)="onSubmit()" class="btn btn-success">Sign Up</button>
         </div>
       </div>
+    </div>
+
+    <div class="row mt-5">
     </div>
 
   </div>
